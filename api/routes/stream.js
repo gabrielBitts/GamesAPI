@@ -3,4 +3,5 @@ module.exports = app => {
 
     app.route('/api/v1/stream')
     .get(controller.listStream)
+    .post(controller.saveStream)
 }
