@@ -1,5 +1,5 @@
 {
-  "name": "GamesAPI",
+  "name": "games-api",
   "version": "0.0.1",
   "description": "Games listing api, included company, launch year, cover boxes and more",
   "main": "index.js",
