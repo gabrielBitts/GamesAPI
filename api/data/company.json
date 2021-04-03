@@ -1,0 +1,26 @@
+{
+    "company":{
+        "data": [
+            {
+                "id": 1,
+                "name": "Blizzard North"
+            },
+            {
+                "id": 2,
+                "name": "From Software"
+            },
+            {
+                "id": 3,
+                "name": "Nintendo"
+            },
+            {
+                "id": 4,
+                "name": "Studio Koba"
+            },
+            {
+                "id": 5,
+                "name": "Silicon & Synapse"
+            }
+        ]
+    }
+}
