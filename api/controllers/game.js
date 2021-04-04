@@ -22,5 +22,27 @@ module.exports = app => {
         res.status(201).json(gameDB)
     }
 
+    controller.removeGame = (req, res) => {
+        const {
+            id
+        } = req.params
+
+        const foundGameIndex = gameMock.data.findIndex(game => game.id == id)
+
+        if(foundGameIndex === -1){
+            res.status(404).json({
+                message: 'Game not found',
+                success: false
+            })
+        }
+        else {
+            gameMock.data.splice(foundGameIndex, 1);
+            res.status(200).json({
+                message: 'Game deleted successfully',
+                success: true
+            })
+        }
+    }
+
     return controller
 }
