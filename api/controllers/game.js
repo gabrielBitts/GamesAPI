@@ -16,7 +16,10 @@ module.exports = app => {
             id: parseInt(id),
             name: req.body.name,
             year: req.body.year,
-            studio: req.body.studio
+            studio: req.body.studio,
+            platform: req.body.platform,
+            dtZeramento: req.body.dtZeramento,
+            tempo: req.body.tempo
         })
 
         res.status(201).json(gameDB)
