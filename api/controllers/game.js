@@ -1,5 +1,3 @@
-var id = require('uuid/v4')
-
 module.exports = app => {
     const gameDB = require('../data/game.json')
     const controller = {}
@@ -7,13 +5,11 @@ module.exports = app => {
     const {
         game: gameMock
     } = gameDB
-
-    id = id().replace(/[^0-9]/g, '')
     
     controller.listGame = (req, res) => res.status(200).json(gameDB)
     controller.saveGame = (req, res) => {
         gameMock.data.push({
-            id: parseInt(id),
+            id: gameDB.game.data.length + 1,
             name: req.body.name,
             year: req.body.year,
             studio: req.body.studio,
