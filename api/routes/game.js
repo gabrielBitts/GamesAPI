@@ -6,5 +6,8 @@ module.exports = app => {
     .post(controller.saveGame)
 
     app.route('/api/v1/game/:id')
+    .get(controller.listGameId)
+
+    app.route('/api/v1/game/:id')
     .delete(controller.removeGame)
 }
