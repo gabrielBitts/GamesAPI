@@ -7,7 +7,8 @@ const gameSchema = new mongoose.Schema({
     studio: String,
     platform: String,
     dtZeramento: String,
-    tempo: String
+    tempo: String,
+    coverImg: String
 });
 
 module.exports = mongoose.model('Game', gameSchema, 'game');
