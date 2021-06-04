@@ -1,8 +1,6 @@
 const Game = require("../models/game");
 
 module.exports = app => {
-    const gameDB = require('../data/game.json');
-
     const controller = {}
 
     const {
@@ -37,8 +35,6 @@ module.exports = app => {
         const {
             id
         } = req.params
-
-        const foundGameIndex = gameMock.data.findIndex(game => game.id == id)
 
         const game = await Game.findOne({ id });
 
