@@ -1,41 +1,48 @@
+const Game = require("../models/game");
+
 module.exports = app => {
-    const gameDB = require('../data/game.json')
     const controller = {}
 
-    const {
-        game: gameMock
-    } = gameDB
-    
-    controller.listGame = (req, res) => res.status(200).json(gameDB)
-    controller.saveGame = (req, res) => {
-        gameMock.data.push({
-            id: gameDB.game.data.length + 1,
-            name: req.body.name,
-            year: req.body.year,
-            studio: req.body.studio,
-            platform: req.body.platform,
-            dtZeramento: req.body.dtZeramento,
-            tempo: req.body.tempo
-        })
+    controller.listGame = async (req, res) => {
+        const listaJogos = await Game.find({});
+        res.status(200).json(listaJogos)
+    }
+    controller.saveGame = async (req, res) => {
+        const lastId = await Game.find().sort({_id: -1}).limit(5);
 
-        res.status(201).json(gameDB)
+        const newGame = new Game();
+        newGame.id = lastId[0].id + 1;
+        newGame.name = req.body.name;
+        newGame.year = req.body.year;
+        newGame.studio = req.body.studio;
+        newGame.platform = req.body.platform;
+        newGame.dtZeramento = req.body.dtZeramento;
+        newGame.tempo = req.body.tempo;
+
+        await newGame.save(async function(err) {
+            if (err)
+                throw err;
+
+            res.status(201).json(newGame)
+        });
     }
 
-    controller.removeGame = (req, res) => {
+    controller.removeGame = async(req, res) => {
         const {
             id
         } = req.params
 
-        const foundGameIndex = gameMock.data.findIndex(game => game.id == id)
+        const game = await Game.findOne({ id });
 
-        if(foundGameIndex === -1){
+        if(!game){
             res.status(404).json({
                 message: 'Game not found',
                 success: false
             })
         }
         else {
-            gameMock.data.splice(foundGameIndex, 1);
+            await Game.deleteOne({ id });
+
             res.status(200).json({
                 message: 'Game deleted successfully',
                 success: true
