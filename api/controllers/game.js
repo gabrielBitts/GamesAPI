@@ -3,10 +3,6 @@ const Game = require("../models/game");
 module.exports = app => {
     const controller = {}
 
-    const {
-        game: gameMock
-    } = gameDB
-
     controller.listGame = async (req, res) => {
         const listaJogos = await Game.find({});
         res.status(200).json(listaJogos)
@@ -45,7 +41,7 @@ module.exports = app => {
             })
         }
         else {
-            let removed = await Game.remove({ id });
+            await Game.deleteOne({ id });
 
             res.status(200).json({
                 message: 'Game deleted successfully',

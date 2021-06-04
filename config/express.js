@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const config = require('config')
 const consign = require('consign')
 const mongoose = require('mongoose')
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = 'mongodb+srv://shinnelo:pLYuYYgPRBZSeONi@gamedb0.gyjxr.mongodb.net/game-db';
 
 module.exports = () => {
     const app = express();
