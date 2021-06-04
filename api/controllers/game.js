@@ -18,6 +18,7 @@ module.exports = app => {
         newGame.platform = req.body.platform;
         newGame.dtZeramento = req.body.dtZeramento;
         newGame.tempo = req.body.tempo;
+        newGame.coverImg = req.body.coverImg;
 
         await newGame.save(async function(err) {
             if (err)
