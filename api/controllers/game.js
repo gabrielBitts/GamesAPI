@@ -27,7 +27,6 @@ module.exports = app => {
             res.status(201).json(newGame)
         });
     }
-
     controller.removeGame = async(req, res) => {
         const {
             id
