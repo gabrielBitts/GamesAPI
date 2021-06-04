@@ -28,6 +28,11 @@ module.exports = app => {
         });
     }
 
+    controller.listGameId = async (req, res) => {
+        const listaJogo = await Game.findOne({id: req.params.id});
+        res.status(200).json(listaJogo)
+    }
+
     controller.removeGame = async(req, res) => {
         const {
             id
